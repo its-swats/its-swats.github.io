@@ -16,7 +16,11 @@
           <h1>shawn watson</h1>
         </div>
       </div>
-      <div id='emptySpace' class='row projectBar'>
+      <div class='row projectBar'>
+        <div class='column column-50 column-offset-25'>
+          <div id='emptySpace' class='row'>
+          </div>
+        </div>
       </div>
       <div class='row' id='icons'>
         <div class='column column-50 column-offset-25'>
@@ -46,7 +50,7 @@
 
 <script id='projectDetails' type='text/x-handlebars-template'>
   {{#each project}}
-    <div class='column center {{cssOptions}}'>
+    <div id='{{label}}' class='column center {{cssOptions}}'>
       <img class='icon' src='./images/{{image}}.png'>
       <label>{{label}}</label>
     </div>

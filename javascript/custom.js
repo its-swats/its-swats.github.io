@@ -7,7 +7,7 @@ $(function(){
 var projects = function(){
   $('#projects').on('click', function(event){
     event.preventDefault();
-    $('#emptySpace').animate({'height': '7.5em'})
+    $('.projectBar').animate({'height': '7.5em'})
     openProjectsTab();
   })
 }
