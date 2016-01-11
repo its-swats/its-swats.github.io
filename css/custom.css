@@ -35,11 +35,13 @@ a {
 .icon {
   height: 5em;
   width: 5em;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .icon-small {
-  height: 3em;
-  width: 3em;
+  height: 5em;
+  width: 5em;
 }
 
 .iconify {
@@ -60,4 +62,8 @@ a {
 
 .inline {
   display: inline-block;
+}
+
+h1.inline {
+  vertical-align: text-bottom;
 }
