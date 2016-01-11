@@ -1,22 +1,25 @@
 <html>
   <head>
     <title>Shawn Watson</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+    <link rel="stylesheet" type='text/css' href="./css/normalize.css">
     <link rel='stylesheet' type='text/css' href='./css/milligram.css'>
     <link rel='stylesheet' type='text/css' href='./css/font-awesome.min.css'>
     <link rel='stylesheet' type='text/css' href='./css/custom.css'>
     <script src='./javascript/jquery-2.1.4.min.js'></script>
+    <script src='./javascript/handlebars.min.js'></script>
     <script src='./javascript/custom.js'></script>
   </head>
   <body>
-    <div class='container debug'>
-      <div class='row content debug'>
-        <div class='column column-50 column-offset-25 debug center'>
+    <div class='container'>
+      <div class='row'>
+        <div class='column column-50 column-offset-25 center'>
           <h1>shawn watson</h1>
         </div>
       </div>
-      <div class='row debug'>
-        <div class='column column-50 column-offset-25 debug'>
+      <div id='emptySpace' class='row projectBar'>
+      </div>
+      <div class='row' id='icons'>
+        <div class='column column-50 column-offset-25'>
           <div class='row icon-row'>
             <div class='column'>
               <a href='http://www.github.com/its-swats'><i class="fa fa-github fa-5x"></i></a>
@@ -27,7 +30,7 @@
               <label>linkedin</label>
             </div>
             <div class='column'>
-              <a href='#'><i class="fa fa-folder-open fa-5x"></i></a>
+              <a id='projects' href='#'><i class="fa fa-folder-open fa-5x"></i></a>
               <label>projects</label>
             </div>
             <div class='column'>
@@ -40,3 +43,12 @@
     </div>
   </body>
 </html>
+
+<script id='projectDetails' type='text/x-handlebars-template'>
+  {{#each project}}
+    <div class='column center {{cssOptions}}'>
+      <img class='icon' src='./images/{{image}}.png'>
+      <label>{{label}}</label>
+    </div>
+  {{/each}}
+</script>

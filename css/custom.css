@@ -27,3 +27,20 @@ a:hover {
 a {
  color: #FFAE20;
 }
+
+.icon {
+  height: 5em;
+  width: 5em;
+}
+
+.iconify {
+  border-radius: 50%;
+}
+
+.hidden {
+  display: none;
+}
+
+.projectBar {
+  height: 0em;
+}
