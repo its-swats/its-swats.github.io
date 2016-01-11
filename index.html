@@ -22,6 +22,12 @@
           </div>
         </div>
       </div>
+      <div class='row projectDetailsWindow'>
+        <div class='column column-50 column-offset-25'>
+          <div id='projectDeets' class='row'>
+          </div>
+        </div>
+      </div>
       <div class='row' id='icons'>
         <div class='column column-50 column-offset-25'>
           <div class='row icon-row'>
@@ -48,11 +54,19 @@
   </body>
 </html>
 
-<script id='projectDetails' type='text/x-handlebars-template'>
+<script id='projectIcons' type='text/x-handlebars-template'>
   {{#each project}}
     <div id='{{label}}' class='column center {{cssOptions}}'>
       <img class='icon' src='./images/{{image}}.png'>
       <label>{{label}}</label>
     </div>
   {{/each}}
+</script>
+
+<script id='projectDetails' type='text/x-handlebars-template'>
+  <div class='column'>
+    <img class='icon-small inline' src='./images/{{project.image}}.png'><h1 class='inline'>&nbsp;{{project.label}}</h1>
+    <p>{{project.description}}</p>
+    <p>Technologies used: {{project.technologies}}</p>
+  </div>
 </script>

@@ -33,14 +33,27 @@ a {
   width: 5em;
 }
 
+.icon-small {
+  height: 3em;
+  width: 3em;
+}
+
 .iconify {
   border-radius: 50%;
 }
 
 .hidden {
-  display: none;
+  visibility: hidden;
 }
 
 .projectBar {
   height: 0em;
+}
+
+.projectDetailsWindow {
+  height: 0em;
+}
+
+.inline {
+  display: inline-block;
 }
