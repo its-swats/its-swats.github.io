@@ -24,6 +24,10 @@ a:hover {
   color: #A50217;
 }
 
+.active {
+  color: #A50217;
+}
+
 a {
  color: #FFAE20;
 }

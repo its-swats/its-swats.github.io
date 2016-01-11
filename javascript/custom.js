@@ -3,15 +3,24 @@ $(function(){
   addContent();
 })
 
-
+// if not active, load immediately and make active
+// if active, close it down, and remove active
 var projects = function(){
   $('#projects').on('click', function(event){
     event.preventDefault();
-    $('.projectDetailsWindow').animate({'height': '0em'}, 1000, function(){
-      $('#projectDeets').html('')
+    if ($(this).hasClass('active') == false) {
+      $(this).toggleClass('active')  
       $('.projectBar').animate({'height': '7.5em'})
       openProjectsTab();
-    })
+    } else {
+      $(this).toggleClass('active')  
+      $('.projectDetailsWindow').animate({'height': '0em'}, 1000, function(){
+        $('#projectDeets').html('')
+      })
+      $('.projectBar').animate({'height': '0em'}, 1000, function(){
+        $('#emptySpace').html('')
+      })
+    }  
   })
 }
 
