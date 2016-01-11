@@ -20,8 +20,8 @@ var addContent = function(){
     var target = $(this).parent().attr('id');
     $('.projectBar').animate({'height': '0em'}, 1000, function(){
       $('#emptySpace').html('')
-      $('.projectDetailsWindow').animate({'height': '17.5em'})
       projectDetails(target)
+      autoSizeHeight('.projectDetailsWindow')
     });
   })
 }
@@ -43,6 +43,13 @@ var projectDetails = function(target){
   var context = {'project': object[0]};
   var template = template(context);
   $('#projectDeets').html(template); 
+}
+
+var autoSizeHeight = function(target) {
+  var curHeight = $(target).height();
+  $(target).css('height', 'auto');
+  var autoHeight = $(target).height();
+  $(target).height(curHeight).animate({height: autoHeight}, 1000);
 }
 
 var projectData = [
