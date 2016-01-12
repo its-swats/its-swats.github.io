@@ -68,5 +68,6 @@
     <img class='icon-small inline' src='./images/{{project.image}}.png'><h1 class='inline'>&nbsp;{{project.label}}</h1>
     <p>{{project.description}}</p>
     <p>Technologies used: {{project.technologies}}</p>
+    <p>{ <a href='{{project.github}}' target='_blank'>source code</a> {{#if project.deployed}}| <a href='{{project.deployed}}' target='_blank'>deployed</a>{{/if}} }
   </div>
 </script>

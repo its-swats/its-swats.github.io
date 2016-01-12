@@ -62,9 +62,29 @@ var autoSizeHeight = function(target) {
 }
 
 var projectData = [
-                    {label: 'hsCardLookup', image: 'hearthstone', description: 'Hearthstone Card Lookup is a personal project designed to consume an API consisting of JSON objects. It will return cards from Blizzard\'s game Hearthstone based on the user\'s search parameters.', technologies: 'rails-api, Javascript, jQuery, Handlebars'},
-                    {label: 'TasteMaker', image: 'tastemaker', description: 'TasteMaker was a Final Project at Dev Bootcamp. It is an iOS App written in JavaScript that allows users to scan and catalog the wines that they drink. Users can answer questions about their scanned wines, building up a taste profile, that will be used to recommend other wines that the user may like.', technologies: 'Meteor, Javascript, jQuery, FoundationCSS, UnderscoreJS'},
-                    {label: 'timeTrackr', image: 'timetrackr', cssOptions: 'iconify', description: 'timeTrackr is a Chrome Extension developed in JavaScript that tracks a user\'s time spent on each domain. The extension will then display that information to the user so that they can track their browsing habits', technologies: 'Javascript, jQuery, Highcharts, Chrome Extension' }
+                    { label: 'hsCardLookup', 
+                      image: 'hearthstone', 
+                      description: 'Hearthstone Card Lookup is a personal project designed to consume an API consisting of JSON objects. It will return cards from Blizzard\'s game Hearthstone based on the user\'s search parameters.', 
+                      technologies: 'rails-api, Javascript, jQuery, Handlebars',
+                      github: 'https://github.com/its-swats/HearthstoneCardSearch',
+                      deployed: 'http://hearthstone-card-lookup.herokuapp.com/'
+                    },
+
+                    { label: 'TasteMaker', 
+                      image: 'tastemaker', 
+                      description: 'TasteMaker was a Final Project at Dev Bootcamp. It is an iOS App written in JavaScript that allows users to scan and catalog the wines that they drink. Users can answer questions about their scanned wines, building up a taste profile, that will be used to recommend other wines that the user may like.', 
+                      technologies: 'Meteor, Javascript, jQuery, FoundationCSS, UnderscoreJS',
+                      github: 'https://github.com/its-swats/TasteMaker'
+                    },
+
+                    { label: 'timeTrackr', 
+                      image: 'timetrackr', 
+                      cssOptions: 'iconify', 
+                      description: 'timeTrackr is a Chrome Extension developed in JavaScript that tracks a user\'s time spent on each domain. The extension will then display that information to the user so that they can track their browsing habits', 
+                      technologies: 'Javascript, jQuery, Highcharts, Chrome Extension',
+                      github: 'https://github.com/its-swats/timeTrackr',
+                      deployed: 'https://chrome.google.com/webstore/detail/timetrackr/nggcadhllpclemfkfodacomdhbkbahjd'
+                    }
                   ]
 
 
