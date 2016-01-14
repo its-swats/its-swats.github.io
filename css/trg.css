@@ -55,7 +55,11 @@
     tablet columns
 */
 /* 800px */
-@media (min-width: 10em) {
+/*@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait),
+only screen and (max-device-width: 640px)
+*/
+
+@media only screen and (min-width: 10em) {
     .container {
         width: 20em; 
     }
