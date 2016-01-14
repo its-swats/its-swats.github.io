@@ -55,9 +55,9 @@
     tablet columns
 */
 /* 800px */
-@media (min-width: 50em) {
+@media (min-width: 10em) {
     .container {
-        width: 45em; /* 720px */
+        width: 20em; 
     }
 
     .gutters-t .col {
@@ -99,10 +99,10 @@
     desktop columns
 */
 /* 1200px */
-@media (min-width: 75em) {
-    /*.container {
-        width: 64em; /* 1024px */
-    }*/
+@media (min-width: 35em) {
+    .container {
+        width: 35em;
+    }
 
     .gutters-t .col {
         margin-left: 0;
