@@ -8,12 +8,15 @@ body {
   transform: translateY(-50%);
 }
 
+.margin-auto {
+  margin: auto;
+}
 .center {
   text-align: center;
 }
 
 .debug {
-  /*outline: 1px solid black;*/
+  outline: 1px solid black;
 }
 
 .icon-row {
