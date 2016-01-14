@@ -5,8 +5,10 @@ body {
 .container {
   position: relative;
   top: 50%;
-  -webkit-transform: translateY(0%);
-  transform: translateY(-50%);
+  /*right: 50%;*/
+  /*-webkit-transform: translate(-50%);*/
+  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
 }
 
 .margin-auto {
