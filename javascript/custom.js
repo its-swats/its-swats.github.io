@@ -62,12 +62,12 @@ var autoSizeHeight = function(target) {
 }
 
 var projectData = [
-                    { label: 'hsCardLookup', 
-                      image: 'hearthstone', 
-                      description: 'Hearthstone Card Lookup is a personal project designed to consume an API consisting of JSON objects. It will return cards from Blizzard\'s game Hearthstone based on the user\'s search parameters.', 
-                      technologies: 'rails-api, Javascript, jQuery, Handlebars',
-                      github: 'https://github.com/its-swats/HearthstoneCardSearch',
-                      deployed: 'http://hearthstone-card-lookup.herokuapp.com/'
+                    { label: 'Anonymish',
+                      image: 'anonymish',
+                      description: 'Anonymish is chat app allowing users to post local messages anonymously. Using GeoKit\'s geolocation, users can view posts within 20 miles of their location. Anything outside of that radius will not be visible. ',
+                      technologies: 'React, GeoKit, rails-api, Javascript, jQuery, Pure Reactive Grid',
+                      github: 'https://github.com/its-swats/Anonymish',
+                      deployed: 'http://anonymish.herokuapp.com'
                     },
 
                     { label: 'TasteMaker', 
@@ -85,6 +85,7 @@ var projectData = [
                       github: 'https://github.com/its-swats/timeTrackr',
                       deployed: 'https://chrome.google.com/webstore/detail/timetrackr/nggcadhllpclemfkfodacomdhbkbahjd'
                     }
+
                   ]
 
 
