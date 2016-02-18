@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d3bcf5195f2726b8af51"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b62f37367c347f4a6cbd"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -564,8 +564,7 @@
 
 	__webpack_require__(1);
 	__webpack_require__(74);
-	__webpack_require__(76);
-	(function webpackMissingModule() { throw new Error("Cannot find module \"bundle\""); }());
+	module.exports = __webpack_require__(76);
 
 
 /***/ },
@@ -8040,6 +8039,11 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.store = undefined;
+
 	var _react = __webpack_require__(139);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -8054,18 +8058,18 @@
 
 	var _immutable = __webpack_require__(245);
 
-	var _redux = __webpack_require__(252);
+	var _redux = __webpack_require__(253);
 
-	var _action_creators = __webpack_require__(262);
+	var _action_creators = __webpack_require__(263);
 
-	var _reactRedux = __webpack_require__(263);
+	var _reactRedux = __webpack_require__(264);
 
-	var _main = __webpack_require__(271);
+	var _main = __webpack_require__(272);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	//Maybe try making the tick counter a method of Main?
-	var store = (0, _redux.createStore)(_reducer2.default);
+	var store = exports.store = (0, _redux.createStore)(_reducer2.default);
 	store.dispatch((0, _action_creators.setState)());
 
 	gameLoop();
@@ -28023,7 +28027,8 @@
 	  switch (action.type) {
 	    case 'TICK':
 	      return (0, _tick_events.calculateTick)(state, action);
-	    case 'UPGRADE':
+	    case 'PURCHASE':
+	      return (0, _purchase_upgrade.purchaseUpgrade)(state, action.item);
 	    case 'UPDATE_PLAYER':
 	      return state.mergeDeep(action.state);
 	    case 'SET_STATE':
@@ -28036,6 +28041,8 @@
 	var _tick_events = __webpack_require__(246);
 
 	var _initial_state = __webpack_require__(250);
+
+	var _purchase_upgrade = __webpack_require__(252);
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(247); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "reducer.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
@@ -33219,35 +33226,36 @@
 	  value: true
 	});
 	var upgrades = exports.upgrades = {
-	  "hardware": {
-	    "item1": {
+	  "purchasables": {
+	    "hard_0": {
 	      "id": "hard_0",
-	      "name": "More Ram",
-	      "description": "You program yourself some more RAM, somehow",
-	      "effects": "Store more code",
-	      "cost": "5",
-	      "increase": "maxCode = maxCode + 5",
-	      "owned": "0"
+	      "name": "A Bigger Hard Drive",
+	      "description": "A bigger hard drive lets you store more code. How you coded something physical, we'll never node. ",
+	      "effects": "Increases code storage by 5 lines",
+	      "cost": 1,
+	      "increment": 5,
+	      "increase": ["maxCode", +5],
+	      "owned": 0
 	    },
-	    "item2": {
+	    "hard_1": {
 	      "id": "hard_1",
-	      "name": "Faster processor",
-	      "description": "You code yourself a really fast processor, in 3d",
-	      "effects": "Get code faster",
-	      "cost": "5",
-	      "increase": "totalTime = totalTime - 50",
-	      "owned": "0"
-	    }
-	  },
-	  "software": {
-	    "item1": {
+	      "name": "An extra i7 Core",
+	      "description": "An additional core causes your code to compile code quicker. ",
+	      "effects": "Increases code speed",
+	      "cost": 5,
+	      "increment": 15,
+	      "increase": ["totalSpeed", -50],
+	      "owned": 0
+	    },
+	    "soft_0": {
 	      "id": "soft_0",
-	      "name": "SublimeText",
+	      "name": "A Word Processor",
 	      "description": "It's version 1.0",
 	      "effects": "Increase code speed",
-	      "cost": "5",
-	      "increase": "codePerTick = codePerTick + 5",
-	      "owned": "0"
+	      "cost": 10,
+	      "increment": 1,
+	      "increase": ["codePerTick", +5],
+	      "owned": 0
 	    }
 	  }
 	};
@@ -33259,32 +33267,75 @@
 /* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.purchaseUpgrade = purchaseUpgrade;
+	function purchaseUpgrade(state, item) {
+		var cost = state.getIn(["upgrades", "purchasables", item, "cost"]);
+		var increment = state.getIn(["upgrades", "purchasables", item, "increment"]);
+		var updateType = state.getIn(["upgrades", "purchasables", item, "increase"]).toArray()[0];
+		var updateAmount = state.getIn(["upgrades", "purchasables", item, "increase"]).toArray()[1];
+		if (state.get("code") >= cost) {
+			return state.withMutations(function (state) {
+				state.updateIn(["player", "codeSpent"], function (val) {
+					return val + cost;
+				});
+				state.updateIn(["upgrades", "purchasables", item, "owned"], function (val) {
+					return val + 1;
+				});
+				state.updateIn(["upgrades", "purchasables", item, "cost"], function (val) {
+					return val + increment;
+				});
+				state.update('code', function (val) {
+					return val - cost;
+				});
+				state.updateIn(["player", updateType], function (val) {
+					return val + updateAmount;
+				});
+			});
+		} else {
+			return state;
+		}
+	}
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(247); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "purchase_upgrade.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
+
+/***/ },
+/* 253 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
 	exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = undefined;
 
-	var _createStore = __webpack_require__(253);
+	var _createStore = __webpack_require__(254);
 
 	var _createStore2 = _interopRequireDefault(_createStore);
 
-	var _combineReducers = __webpack_require__(257);
+	var _combineReducers = __webpack_require__(258);
 
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 
-	var _bindActionCreators = __webpack_require__(259);
+	var _bindActionCreators = __webpack_require__(260);
 
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 
-	var _applyMiddleware = __webpack_require__(260);
+	var _applyMiddleware = __webpack_require__(261);
 
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 
-	var _compose = __webpack_require__(261);
+	var _compose = __webpack_require__(262);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
-	var _warning = __webpack_require__(258);
+	var _warning = __webpack_require__(259);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -33308,7 +33359,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33317,7 +33368,7 @@
 	exports.ActionTypes = undefined;
 	exports["default"] = createStore;
 
-	var _isPlainObject = __webpack_require__(254);
+	var _isPlainObject = __webpack_require__(255);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
@@ -33529,11 +33580,11 @@
 	}
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isHostObject = __webpack_require__(255),
-	    isObjectLike = __webpack_require__(256);
+	var isHostObject = __webpack_require__(256),
+	    isObjectLike = __webpack_require__(257);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -33604,7 +33655,7 @@
 
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports) {
 
 	/**
@@ -33630,7 +33681,7 @@
 
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports) {
 
 	/**
@@ -33664,7 +33715,7 @@
 
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -33672,13 +33723,13 @@
 	exports.__esModule = true;
 	exports["default"] = combineReducers;
 
-	var _createStore = __webpack_require__(253);
+	var _createStore = __webpack_require__(254);
 
-	var _isPlainObject = __webpack_require__(254);
+	var _isPlainObject = __webpack_require__(255);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _warning = __webpack_require__(258);
+	var _warning = __webpack_require__(259);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -33797,7 +33848,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33826,7 +33877,7 @@
 	}
 
 /***/ },
-/* 259 */
+/* 260 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33882,7 +33933,7 @@
 	}
 
 /***/ },
-/* 260 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33892,7 +33943,7 @@
 	exports.__esModule = true;
 	exports["default"] = applyMiddleware;
 
-	var _compose = __webpack_require__(261);
+	var _compose = __webpack_require__(262);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
@@ -33944,7 +33995,7 @@
 	}
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -33978,7 +34029,7 @@
 	}
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -33991,6 +34042,7 @@
 	exports.tick = tick;
 	exports.updatePlayer = updatePlayer;
 	exports.setState = setState;
+	exports.purchase = purchase;
 	function tick(state) {
 	  return { type: 'TICK', amount: state.getIn(['player', 'codePerTick']) };
 	}
@@ -34003,11 +34055,15 @@
 	  return { type: 'SET_STATE', state: state };
 	}
 
+	function purchase(item) {
+	  return { type: 'PURCHASE', item: item };
+	}
+
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(247); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "action_creators.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34015,11 +34071,11 @@
 	exports.__esModule = true;
 	exports.connect = exports.Provider = undefined;
 
-	var _Provider = __webpack_require__(264);
+	var _Provider = __webpack_require__(265);
 
 	var _Provider2 = _interopRequireDefault(_Provider);
 
-	var _connect = __webpack_require__(266);
+	var _connect = __webpack_require__(267);
 
 	var _connect2 = _interopRequireDefault(_connect);
 
@@ -34029,7 +34085,7 @@
 	exports.connect = _connect2["default"];
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -34039,7 +34095,7 @@
 
 	var _react = __webpack_require__(139);
 
-	var _storeShape = __webpack_require__(265);
+	var _storeShape = __webpack_require__(266);
 
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 
@@ -34113,7 +34169,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 265 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34129,7 +34185,7 @@
 	});
 
 /***/ },
-/* 266 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -34141,27 +34197,27 @@
 
 	var _react = __webpack_require__(139);
 
-	var _storeShape = __webpack_require__(265);
+	var _storeShape = __webpack_require__(266);
 
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 
-	var _shallowEqual = __webpack_require__(267);
+	var _shallowEqual = __webpack_require__(268);
 
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
-	var _wrapActionCreators = __webpack_require__(268);
+	var _wrapActionCreators = __webpack_require__(269);
 
 	var _wrapActionCreators2 = _interopRequireDefault(_wrapActionCreators);
 
-	var _isPlainObject = __webpack_require__(254);
+	var _isPlainObject = __webpack_require__(255);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _hoistNonReactStatics = __webpack_require__(269);
+	var _hoistNonReactStatics = __webpack_require__(270);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	var _invariant = __webpack_require__(270);
+	var _invariant = __webpack_require__(271);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -34457,7 +34513,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 267 */
+/* 268 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -34488,7 +34544,7 @@
 	}
 
 /***/ },
-/* 268 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34496,7 +34552,7 @@
 	exports.__esModule = true;
 	exports["default"] = wrapActionCreators;
 
-	var _redux = __webpack_require__(252);
+	var _redux = __webpack_require__(253);
 
 	function wrapActionCreators(actionCreators) {
 	  return function (dispatch) {
@@ -34505,7 +34561,7 @@
 	}
 
 /***/ },
-/* 269 */
+/* 270 */
 /***/ function(module, exports) {
 
 	/**
@@ -34551,7 +34607,7 @@
 
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -34609,7 +34665,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -34625,43 +34681,59 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Shop = __webpack_require__(272);
+	var _Shop = __webpack_require__(273);
 
 	var _Shop2 = _interopRequireDefault(_Shop);
 
-	var _reactRedux = __webpack_require__(263);
+	var _reactRedux = __webpack_require__(264);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Main = exports.Main = _react2.default.createClass({
 	  displayName: 'Main',
 
+	  codePerSec: function codePerSec() {
+	    var second = this.props.player.get('totalSpeed') / 1000;
+	    var code = this.props.player.get('codePerTick');
+	    return Math.round(code / second * 10) / 10;
+	  },
+
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      null,
+	      { className: 'col-xs-12 col-sm-10 col-sm-offset-1 main' },
 	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        'Idle Coder'
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        { className: 'code' },
-	        this.props.code
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        this.props.player.codeSpent
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        this.props.player.totalSpeed
-	      ),
-	      _react2.default.createElement(_Shop2.default, { code: this.props.code, upgrades: this.props.upgrades.hardware }),
-	      _react2.default.createElement(_Shop2.default, { code: this.props.code, upgrades: this.props.upgrades.software })
+	        'div',
+	        { className: 'well' },
+	        _react2.default.createElement(
+	          'h1',
+	          { className: 'text-center' },
+	          'Idle Coder'
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'list-inline text-center' },
+	          _react2.default.createElement(
+	            'li',
+	            { className: 'code' },
+	            'Lines of Code: ',
+	            this.props.code
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'Code/second: ',
+	            this.codePerSec()
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'Code Spent: ',
+	            this.props.player.get('codeSpent')
+	          )
+	        ),
+	        _react2.default.createElement(_Shop2.default, { state: this.props })
+	      )
 	    );
 	  }
 	});
@@ -34669,8 +34741,8 @@
 	function mapStateToProps(state) {
 	  return {
 	    code: state.get('code'),
-	    player: state.getIn(['player']).toObject(),
-	    upgrades: state.getIn(['upgrades']).toObject()
+	    player: state.get('player'),
+	    upgrades: state.get('upgrades')
 	  };
 	}
 
@@ -34680,7 +34752,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -34695,53 +34767,70 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _action_creators = __webpack_require__(263);
+
+	var _reducer = __webpack_require__(244);
+
+	var _reducer2 = _interopRequireDefault(_reducer);
+
+	var _index = __webpack_require__(76);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react2.default.createClass({
 	  displayName: 'Shop',
 
-	  purchaseItem: function purchaseItem(event) {},
+	  purchaseItem: function purchaseItem(event) {
+	    _index.store.dispatch((0, _action_creators.purchase)(event.target.id));
+	  },
+
+	  makeButton: function makeButton(item) {
+	    if (this.props.state.code >= item.get('cost')) {
+	      return _react2.default.createElement(
+	        'button',
+	        { className: 'btn btn-lg btn-primary btn-block', id: item.get('id'), onClick: this.purchaseItem },
+	        'Make it!'
+	      );
+	    } else {
+	      return _react2.default.createElement(
+	        'button',
+	        { className: 'btn btn-lg btn-primary btn-block', disabled: 'disabled' },
+	        'Not Enough Code'
+	      );
+	    };
+	  },
 
 	  printStore: function printStore() {
 	    var self = this;
-	    return this.props.upgrades.map(function (item) {
+	    return this.props.state.upgrades.get('purchasables').map(function (item) {
 	      return _react2.default.createElement(
 	        'div',
-	        { key: item.get('id') },
+	        { className: 'shop-box col-xs-12 col-sm-6 col-lg-4 well', key: item.get('id') },
 	        _react2.default.createElement(
-	          'p',
-	          null,
-	          item.get('name')
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          item.get('description')
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          item.get('effects')
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          item.get('cost')
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          item.get('owned')
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { id: item.get('id'), onClick: self.purchaseItem },
+	          'div',
+	          { className: 'row' },
 	          _react2.default.createElement(
-	            'h3',
-	            null,
-	            'Make it!'
+	            'div',
+	            { className: 'item-name col-xs-10' },
+	            item.get('name')
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'item-cost col-xs-2' },
+	            item.get('cost'),
+	            'cd'
 	          )
-	        )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'row' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'item-desc col-xs-12' },
+	            item.get('description')
+	          )
+	        ),
+	        self.makeButton(item)
 	      );
 	    });
 	  },
@@ -34749,7 +34838,7 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      null,
+	      { className: 'row' },
 	      this.printStore()
 	    );
 	  }
