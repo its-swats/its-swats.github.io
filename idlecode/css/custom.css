@@ -1,0 +1,27 @@
+html {
+	box-sizing: border-box;
+}
+
+.fluid-container {  
+	margin-top: 2em;
+}
+
+div > h1 {
+	margin-top: 0em;
+}
+
+.shop-box {
+
+}
+
+.item-desc {
+	min-height: 10em;
+}
+
+.item-name {
+	font-weight: bold;
+}
+
+.item-cost {
+	font-weight: bold;
+}
