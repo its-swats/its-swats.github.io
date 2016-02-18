@@ -2,7 +2,7 @@ html {
 	box-sizing: border-box;
 }
 
-.fluid-container {  
+.container-fluid {  
 	margin-top: 2em;
 }
 
@@ -24,4 +24,12 @@ div > h1 {
 
 .item-cost {
 	font-weight: bold;
+}
+
+.rig {
+	/*padding-right: -1em;*/
+}
+
+.shop {
+
 }

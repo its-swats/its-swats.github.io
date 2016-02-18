@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b62f37367c347f4a6cbd"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "482e7cd53fd35c66f016"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33256,6 +33256,16 @@
 	      "increment": 1,
 	      "increase": ["codePerTick", +5],
 	      "owned": 0
+	    },
+	    "soft_1": {
+	      "id": "soft_1",
+	      "name": "A Good Dinner",
+	      "description": "You code up a nice chicken dinner, and then eat it. Gets the brain juices flowing.",
+	      "effects": "Increase code speed",
+	      "cost": 1,
+	      "increment": 1,
+	      "increase": ["codePerTick", +1],
+	      "owned": 0
 	    }
 	  }
 	};
@@ -34685,6 +34695,10 @@
 
 	var _Shop2 = _interopRequireDefault(_Shop);
 
+	var _Rig = __webpack_require__(274);
+
+	var _Rig2 = _interopRequireDefault(_Rig);
+
 	var _reactRedux = __webpack_require__(264);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -34701,38 +34715,37 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      { className: 'col-xs-12 col-sm-10 col-sm-offset-1 main' },
+	      { className: 'container-fluid' },
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'well' },
+	        { className: 'col-xs-12 col-sm-10 col-sm-offset-1 main' },
 	        _react2.default.createElement(
-	          'h1',
-	          { className: 'text-center' },
-	          'Idle Coder'
-	        ),
-	        _react2.default.createElement(
-	          'ul',
-	          { className: 'list-inline text-center' },
+	          'div',
+	          { className: 'well' },
 	          _react2.default.createElement(
-	            'li',
-	            { className: 'code' },
-	            'Lines of Code: ',
-	            this.props.code
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'Code/second: ',
-	            this.codePerSec()
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'Code Spent: ',
-	            this.props.player.get('codeSpent')
+	            'h1',
+	            { className: 'text-center' },
+	            'Idle Coder'
 	          )
-	        ),
-	        _react2.default.createElement(_Shop2.default, { state: this.props })
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { 'class': 'row' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'col-xs-12 col-sm-10 col-sm-offset-1 main' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-xs-12 col-sm-3 well rig' },
+	            _react2.default.createElement(_Rig2.default, { state: this.props })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'shop col-xs-12 col-sm-9 well' },
+	            _react2.default.createElement(_Shop2.default, { state: this.props })
+	          )
+	        )
 	      )
 	    );
 	  }
@@ -34805,18 +34818,18 @@
 	    return this.props.state.upgrades.get('purchasables').map(function (item) {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'shop-box col-xs-12 col-sm-6 col-lg-4 well', key: item.get('id') },
+	        { className: 'col-xs-12 col-sm-6 well', key: item.get('id') },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'item-name col-xs-10' },
+	            { className: 'item-name col-sm-10 col-xs-12' },
 	            item.get('name')
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'item-cost col-xs-2' },
+	            { className: 'item-cost col-sm-2 col-xs-12' },
 	            item.get('cost'),
 	            'cd'
 	          )
@@ -34838,13 +34851,99 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      { className: 'row' },
+	      null,
 	      this.printStore()
 	    );
 	  }
 	});
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(247); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Shop.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
+
+/***/ },
+/* 274 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(139);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+		displayName: 'Rig',
+
+		createRig: function createRig() {
+			return this.props.state.upgrades.get('purchasables').map(function (item) {
+				if (item.get('owned') > 0) {
+					return _react2.default.createElement(
+						'p',
+						null,
+						item.get('name'),
+						' - ',
+						item.get('owned')
+					);
+				}
+			});
+		},
+
+		rigStats: function rigStats() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'p',
+					null,
+					'Codebank: ',
+					this.props.state.code,
+					' / ',
+					this.props.state.player.get('maxCode'),
+					'lns'
+				),
+				_react2.default.createElement(
+					'p',
+					null,
+					'Compile Speed: ',
+					this.compileSpeed(this.props.state.player.get('totalSpeed'))
+				),
+				_react2.default.createElement(
+					'p',
+					null,
+					'Code per Compile: ',
+					this.props.state.player.get('codePerTick')
+				),
+				_react2.default.createElement(
+					'p',
+					null,
+					'Total Code Used: ',
+					this.props.state.player.get('codeSpent')
+				)
+			);
+		},
+
+		compileSpeed: function compileSpeed(speed) {
+			return speed / 1000 + " seconds";
+		},
+
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				this.rigStats(),
+				this.createRig()
+			);
+		}
+	});
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(247); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Rig.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ }
