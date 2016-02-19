@@ -39,3 +39,7 @@ div > h1 {
 h3 {
 	margin-top: 0em;
 }
+
+.btn:focus, .btn:active {
+	outline: none;
+}
