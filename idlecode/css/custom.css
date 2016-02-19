@@ -1,5 +1,14 @@
-html {
-	box-sizing: border-box;
+* {
+	color: #C3FFD4;
+}
+
+body { 
+	background-color: #0D2321;
+ }
+
+.well { 
+	background-color:  #0B464C;
+	border: 1px solid #16816D;
 }
 
 .container-fluid {  
@@ -20,16 +29,13 @@ div > h1 {
 
 .item-name {
 	font-weight: bold;
+	min-height: 3em;
 }
 
 .item-cost {
 	font-weight: bold;
 }
 
-.rig {
-	/*padding-right: -1em;*/
-}
-
-.shop {
-
+h3 {
+	margin-top: 0em;
 }

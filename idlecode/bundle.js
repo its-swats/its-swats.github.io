@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "482e7cd53fd35c66f016"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b474c15ba5fa548bc29e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -8058,13 +8058,13 @@
 
 	var _immutable = __webpack_require__(245);
 
-	var _redux = __webpack_require__(253);
+	var _redux = __webpack_require__(254);
 
-	var _action_creators = __webpack_require__(263);
+	var _action_creators = __webpack_require__(264);
 
-	var _reactRedux = __webpack_require__(264);
+	var _reactRedux = __webpack_require__(265);
 
-	var _main = __webpack_require__(272);
+	var _main = __webpack_require__(273);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28029,6 +28029,8 @@
 	      return (0, _tick_events.calculateTick)(state, action);
 	    case 'PURCHASE':
 	      return (0, _purchase_upgrade.purchaseUpgrade)(state, action.item);
+	    case 'CODE':
+	      return (0, _code_hard.codeHard)(state, action.amount);
 	    case 'UPDATE_PLAYER':
 	      return state.mergeDeep(action.state);
 	    case 'SET_STATE':
@@ -28043,6 +28045,8 @@
 	var _initial_state = __webpack_require__(250);
 
 	var _purchase_upgrade = __webpack_require__(252);
+
+	var _code_hard = __webpack_require__(253);
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(247); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "reducer.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
@@ -33260,12 +33264,12 @@
 	    "soft_1": {
 	      "id": "soft_1",
 	      "name": "A Good Dinner",
-	      "description": "You code up a nice chicken dinner, and then eat it. Gets the brain juices flowing.",
+	      "description": "You code up a nice chicken dinner, and then eat it. Gets the brain juices flowing. Increases your ability to CODE hard.",
 	      "effects": "Increase code speed",
 	      "cost": 1,
-	      "increment": 1,
-	      "increase": ["codePerTick", +1],
-	      "owned": 0
+	      "increment": 5,
+	      "increase": ["codePerTick", +0],
+	      "owned": 1
 	    }
 	  }
 	};
@@ -33320,32 +33324,59 @@
 /* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.codeHard = codeHard;
+	function codeHard(state, amount) {
+		if (state.get('code') + amount > state.getIn(['player', 'maxCode'])) {
+			return state.update('code', function (val) {
+				return state.getIn(['player', 'maxCode']);
+			});
+		} else {
+			return state.update('code', function (val) {
+				return val + amount;
+			});
+		}
+	}
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(247); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "code_hard.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
+
+/***/ },
+/* 254 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
 	exports.__esModule = true;
 	exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = undefined;
 
-	var _createStore = __webpack_require__(254);
+	var _createStore = __webpack_require__(255);
 
 	var _createStore2 = _interopRequireDefault(_createStore);
 
-	var _combineReducers = __webpack_require__(258);
+	var _combineReducers = __webpack_require__(259);
 
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 
-	var _bindActionCreators = __webpack_require__(260);
+	var _bindActionCreators = __webpack_require__(261);
 
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 
-	var _applyMiddleware = __webpack_require__(261);
+	var _applyMiddleware = __webpack_require__(262);
 
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 
-	var _compose = __webpack_require__(262);
+	var _compose = __webpack_require__(263);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
-	var _warning = __webpack_require__(259);
+	var _warning = __webpack_require__(260);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -33369,7 +33400,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33378,7 +33409,7 @@
 	exports.ActionTypes = undefined;
 	exports["default"] = createStore;
 
-	var _isPlainObject = __webpack_require__(255);
+	var _isPlainObject = __webpack_require__(256);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
@@ -33590,11 +33621,11 @@
 	}
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isHostObject = __webpack_require__(256),
-	    isObjectLike = __webpack_require__(257);
+	var isHostObject = __webpack_require__(257),
+	    isObjectLike = __webpack_require__(258);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -33665,7 +33696,7 @@
 
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports) {
 
 	/**
@@ -33691,7 +33722,7 @@
 
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports) {
 
 	/**
@@ -33725,7 +33756,7 @@
 
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -33733,13 +33764,13 @@
 	exports.__esModule = true;
 	exports["default"] = combineReducers;
 
-	var _createStore = __webpack_require__(254);
+	var _createStore = __webpack_require__(255);
 
-	var _isPlainObject = __webpack_require__(255);
+	var _isPlainObject = __webpack_require__(256);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _warning = __webpack_require__(259);
+	var _warning = __webpack_require__(260);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -33858,7 +33889,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 259 */
+/* 260 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33887,7 +33918,7 @@
 	}
 
 /***/ },
-/* 260 */
+/* 261 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -33943,7 +33974,7 @@
 	}
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33953,7 +33984,7 @@
 	exports.__esModule = true;
 	exports["default"] = applyMiddleware;
 
-	var _compose = __webpack_require__(262);
+	var _compose = __webpack_require__(263);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
@@ -34005,7 +34036,7 @@
 	}
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -34039,7 +34070,7 @@
 	}
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -34051,6 +34082,7 @@
 	});
 	exports.tick = tick;
 	exports.updatePlayer = updatePlayer;
+	exports.codeHard = codeHard;
 	exports.setState = setState;
 	exports.purchase = purchase;
 	function tick(state) {
@@ -34059,6 +34091,10 @@
 
 	function updatePlayer(newState) {
 	  return { type: 'UPDATE_PLAYER', state: newState };
+	}
+
+	function codeHard(amount) {
+	  return { type: 'CODE', amount: amount };
 	}
 
 	function setState(state) {
@@ -34073,7 +34109,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34081,11 +34117,11 @@
 	exports.__esModule = true;
 	exports.connect = exports.Provider = undefined;
 
-	var _Provider = __webpack_require__(265);
+	var _Provider = __webpack_require__(266);
 
 	var _Provider2 = _interopRequireDefault(_Provider);
 
-	var _connect = __webpack_require__(267);
+	var _connect = __webpack_require__(268);
 
 	var _connect2 = _interopRequireDefault(_connect);
 
@@ -34095,7 +34131,7 @@
 	exports.connect = _connect2["default"];
 
 /***/ },
-/* 265 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -34105,7 +34141,7 @@
 
 	var _react = __webpack_require__(139);
 
-	var _storeShape = __webpack_require__(266);
+	var _storeShape = __webpack_require__(267);
 
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 
@@ -34179,7 +34215,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 266 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34195,7 +34231,7 @@
 	});
 
 /***/ },
-/* 267 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -34207,27 +34243,27 @@
 
 	var _react = __webpack_require__(139);
 
-	var _storeShape = __webpack_require__(266);
+	var _storeShape = __webpack_require__(267);
 
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 
-	var _shallowEqual = __webpack_require__(268);
+	var _shallowEqual = __webpack_require__(269);
 
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
-	var _wrapActionCreators = __webpack_require__(269);
+	var _wrapActionCreators = __webpack_require__(270);
 
 	var _wrapActionCreators2 = _interopRequireDefault(_wrapActionCreators);
 
-	var _isPlainObject = __webpack_require__(255);
+	var _isPlainObject = __webpack_require__(256);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _hoistNonReactStatics = __webpack_require__(270);
+	var _hoistNonReactStatics = __webpack_require__(271);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	var _invariant = __webpack_require__(271);
+	var _invariant = __webpack_require__(272);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -34523,7 +34559,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 268 */
+/* 269 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -34554,7 +34590,7 @@
 	}
 
 /***/ },
-/* 269 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34562,7 +34598,7 @@
 	exports.__esModule = true;
 	exports["default"] = wrapActionCreators;
 
-	var _redux = __webpack_require__(253);
+	var _redux = __webpack_require__(254);
 
 	function wrapActionCreators(actionCreators) {
 	  return function (dispatch) {
@@ -34571,7 +34607,7 @@
 	}
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports) {
 
 	/**
@@ -34617,7 +34653,7 @@
 
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -34675,7 +34711,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -34691,26 +34727,25 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Shop = __webpack_require__(273);
+	var _Shop = __webpack_require__(274);
 
 	var _Shop2 = _interopRequireDefault(_Shop);
 
-	var _Rig = __webpack_require__(274);
+	var _Rig = __webpack_require__(275);
 
 	var _Rig2 = _interopRequireDefault(_Rig);
 
-	var _reactRedux = __webpack_require__(264);
+	var _CodeButton = __webpack_require__(276);
+
+	var _CodeButton2 = _interopRequireDefault(_CodeButton);
+
+	var _reactRedux = __webpack_require__(265);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Main = exports.Main = _react2.default.createClass({
 	  displayName: 'Main',
 
-	  codePerSec: function codePerSec() {
-	    var second = this.props.player.get('totalSpeed') / 1000;
-	    var code = this.props.player.get('codePerTick');
-	    return Math.round(code / second * 10) / 10;
-	  },
 
 	  render: function render() {
 	    return _react2.default.createElement(
@@ -34718,7 +34753,7 @@
 	      { className: 'container-fluid' },
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'col-xs-12 col-sm-10 col-sm-offset-1 main' },
+	        { className: 'col-xs-12 col-sm-10 col-sm-offset-1' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'well' },
@@ -34731,20 +34766,30 @@
 	      ),
 	      _react2.default.createElement(
 	        'div',
-	        { 'class': 'row' },
+	        { className: 'col-xs-12 col-sm-10 col-sm-offset-1' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-xs-12 col-sm-10 col-sm-offset-1 main' },
+	          { className: 'col-xs-12 col-sm-3 rig' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-xs-12 col-sm-3 well rig' },
-	            _react2.default.createElement(_Rig2.default, { state: this.props })
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'well col-sm-11' },
+	              _react2.default.createElement(_CodeButton2.default, { state: this.props })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'well col-sm-11' },
+	              _react2.default.createElement(_Rig2.default, { state: this.props })
+	            )
 	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'shop col-xs-12 col-sm-9 well' },
-	            _react2.default.createElement(_Shop2.default, { state: this.props })
-	          )
+	          _react2.default.createElement('div', { className: 'row' })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'shop col-xs-12 col-sm-9 well' },
+	          _react2.default.createElement(_Shop2.default, { state: this.props })
 	        )
 	      )
 	    );
@@ -34765,7 +34810,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -34780,7 +34825,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _action_creators = __webpack_require__(263);
+	var _action_creators = __webpack_require__(264);
 
 	var _reducer = __webpack_require__(244);
 
@@ -34829,9 +34874,9 @@
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'item-cost col-sm-2 col-xs-12' },
+	            { className: 'item-cost col-sm-2 col-xs-12 text-left' },
 	            item.get('cost'),
-	            'cd'
+	            'ln'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -34852,6 +34897,11 @@
 	    return _react2.default.createElement(
 	      'div',
 	      null,
+	      _react2.default.createElement(
+	        'h3',
+	        { className: 'text-center' },
+	        'The Shop'
+	      ),
 	      this.printStore()
 	    );
 	  }
@@ -34861,7 +34911,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 274 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -34887,8 +34937,13 @@
 					return _react2.default.createElement(
 						'p',
 						null,
-						item.get('name'),
-						' - ',
+						_react2.default.createElement(
+							'strong',
+							null,
+							item.get('name'),
+							':'
+						),
+						_react2.default.createElement('br', null),
 						item.get('owned')
 					);
 				}
@@ -34898,11 +34953,16 @@
 		rigStats: function rigStats() {
 			return _react2.default.createElement(
 				'div',
-				null,
+				{ className: 'well' },
 				_react2.default.createElement(
 					'p',
 					null,
-					'Codebank: ',
+					_react2.default.createElement(
+						'strong',
+						null,
+						'Codebank:'
+					),
+					_react2.default.createElement('br', null),
 					this.props.state.code,
 					' / ',
 					this.props.state.player.get('maxCode'),
@@ -34911,20 +34971,40 @@
 				_react2.default.createElement(
 					'p',
 					null,
-					'Compile Speed: ',
+					_react2.default.createElement(
+						'strong',
+						null,
+						'Compile Speed:'
+					),
+					_react2.default.createElement('br', null),
+					' ',
 					this.compileSpeed(this.props.state.player.get('totalSpeed'))
 				),
 				_react2.default.createElement(
 					'p',
 					null,
-					'Code per Compile: ',
-					this.props.state.player.get('codePerTick')
+					_react2.default.createElement(
+						'strong',
+						null,
+						'Code per Compile:'
+					),
+					_react2.default.createElement('br', null),
+					' ',
+					this.props.state.player.get('codePerTick'),
+					' lines'
 				),
 				_react2.default.createElement(
 					'p',
 					null,
-					'Total Code Used: ',
-					this.props.state.player.get('codeSpent')
+					_react2.default.createElement(
+						'strong',
+						null,
+						'Total Code Used:'
+					),
+					_react2.default.createElement('br', null),
+					' ',
+					this.props.state.player.get('codeSpent'),
+					' lines'
 				)
 			);
 		},
@@ -34937,13 +35017,73 @@
 			return _react2.default.createElement(
 				'div',
 				null,
-				this.rigStats(),
-				this.createRig()
+				_react2.default.createElement(
+					'strong',
+					null,
+					_react2.default.createElement(
+						'h3',
+						{ className: 'text-center' },
+						'Your Rig'
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					null,
+					this.rigStats(),
+					_react2.default.createElement(
+						'div',
+						{ className: 'well' },
+						this.createRig()
+					)
+				)
 			);
 		}
 	});
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(247); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "Rig.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
+
+/***/ },
+/* 276 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/* REACT HOT LOADER */ if (true) { (function () { var ReactHotAPI = __webpack_require__(77), RootInstanceProvider = __webpack_require__(85), ReactMount = __webpack_require__(87), React = __webpack_require__(139); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(139);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _index = __webpack_require__(76);
+
+	var _action_creators = __webpack_require__(264);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _react2.default.createClass({
+		displayName: 'CodeButton',
+
+		codeHard: function codeHard() {
+			var amount = this.props.state.upgrades.getIn(['purchasables', 'soft_1', 'owned']);
+			var action = (0, _action_creators.codeHard)(amount);
+			_index.store.dispatch(action);
+		},
+
+		render: function render() {
+			return _react2.default.createElement(
+				'button',
+				{ className: 'btn btn-large btn-danger btn-block btn-lg', onClick: this.codeHard },
+				'CODE'
+			);
+		}
+	});
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (true) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = __webpack_require__(247); if (makeExportsHot(module, __webpack_require__(139))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "CodeButton.jsx" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ }
