@@ -11,6 +11,7 @@ nav {
 
 .individual-order {
 	z-index: 100;
+	max-width: 8em;
 }
 
 .grill .individual-order {
@@ -36,5 +37,4 @@ nav {
 
 .complete-orders-box {
 	height: 20em;
-	overflow: auto;
 }

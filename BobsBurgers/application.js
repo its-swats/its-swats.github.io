@@ -89,6 +89,8 @@ function handleTemplate(template, context, location, draggable){
 	// Provides option to make templates draggable
 	if (draggable) {
 		$('.individual-order:last-child').draggable({
+			snap: ".grill",
+			snapMode: 'inner',
 			revert: function(event, ui){
 				$(this).data("uiDraggable").originalPosition = {top:0, left:0}
 				return !event
