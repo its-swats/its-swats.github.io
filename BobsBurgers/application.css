@@ -1,0 +1,40 @@
+nav {
+	margin-bottom: 1em;
+}
+
+.grill {
+	outline: 1px solid black;
+	width: 8em;
+	height: 8em;
+	/*margin-right: .75em;*/
+}
+
+.individual-order {
+	z-index: 100;
+}
+
+.grill .individual-order {
+	z-index: 100;
+	height: 6em;
+	width: 6em;
+	outline: 1px dotted black;
+	padding-left: 0px;
+	margin-left: 0px;
+}
+
+.highlight {
+	background-color: yellow;
+}
+
+.grill-panel {
+	height: 15em;
+}
+
+.complete-order {
+	outline: 1px solid black;
+}
+
+.complete-orders-box {
+	height: 20em;
+	overflow: auto;
+}

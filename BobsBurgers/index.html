@@ -1,0 +1,81 @@
+<HTML>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Grill'em'All</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+		<link rel="stylesheet" href="./application.css">
+	</head>
+	<body>
+		<nav class="navbar navbar-dark bg-inverse">
+			<div class="nav navbar-nav">
+				<a class="navbar-brand">Bob's Burgers</a>
+			</div>
+		</nav>
+		<div class='container-fluid'>
+			<div class='row'>
+				<section class='col-md-3'>
+					<div class='card'>
+						<div class='card-header'>
+							<h1>Orders</h1>
+						</div>
+						<div class='card-block' id='orders'>
+						</div>
+					</div>
+				</section>
+				<section class='col-md-9'>
+					<div class='grill-panel card'>
+						<div class='card-header'>
+							<h1>Grills</h1>
+						</div>
+						<div class='card-block' id='grills'>
+							<div id='grill-1' class='grill col-xs-12 col-sm-6 col-md-2'>
+								Grill 1
+							</div>
+							<div id='grill-2' class='grill col-xs-12 col-sm-6 col-md-2'>
+								Grill 2
+							</div>
+							<div id='grill-3' class='grill col-xs-12 col-sm-6 col-md-2'>
+								Grill 3
+							</div>
+							<div id='grill-4' class='grill col-xs-12 col-sm-6 col-md-2'>
+								Grill 4
+							</div>
+							<div id='grill-5' class='grill col-xs-12 col-sm-6 col-md-2'>
+								Grill 5
+							</div>
+						</div>
+					</div>
+						<div class='card'>
+							<div class='card-header'>
+								<h1>Complete Orders</h1>
+							</div>
+							<div class='card-block complete-orders-box' id='complete-orders'>
+							</div>
+						</div>
+				</section>
+			</div>
+		</div>
+		<script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+		<script   src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js"   integrity="sha256-55Jz3pBCF8z9jBO1qQ7cIf0L+neuPTD1u7Ytzrp2dqo="   crossorigin="anonymous"></script>  
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js'></script>
+		<script src='./application.js'></script>
+		<script id='order-template' type='text/handlebars-template'>
+			<div class='individual-order {{type}}' id='{{type}}-{{orderNumber}}'>
+				<h5>{{orderNumber}} - {{type}}</h3>
+			</div>
+		</script>
+		<script id='complete-order' type='text/handlebars-template'>
+		<div class='complete-order col-xs-12 col-md-4'>
+			<ul>
+				{{#each orderNumber}}
+					<li>#{{this}} - {{../type}} burger</li>
+				{{/each}}
+			</ul>
+		</div>
+		</script>
+	</body>
+</HTML>
