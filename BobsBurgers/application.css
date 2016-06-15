@@ -6,6 +6,7 @@ nav {
 	outline: 1px solid black;
 	width: 8em;
 	height: 8em;
+	overflow: auto;
 	/*margin-right: .75em;*/
 }
 
@@ -16,11 +17,15 @@ nav {
 
 .grill .individual-order {
 	z-index: 100;
-	height: 6em;
 	width: 6em;
 	outline: 1px dotted black;
 	padding-left: 0px;
 	margin-left: 0px;
+}
+
+.grill .individual-order h5 {
+	margin-bottom: 0px;
+	font-size: 1em;
 }
 
 .highlight {
